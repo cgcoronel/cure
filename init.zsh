@@ -60,6 +60,7 @@ function cure_command() {
         elif [[ $1 == "upgrade" ]]; then
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull
+                echo "Restart your terminal"
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
