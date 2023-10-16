@@ -1,7 +1,7 @@
 #!/bin/zsh
 # termina zsh plugin manager
 
-target_dir="$HOME/.cure"
+target_dir="$CURE_HOME/modules"
 
 typeset -A plugins
 plugins=(
@@ -37,8 +37,6 @@ for repo init_file in ${(kv)plugins}; do
 done
 
 function git-pull-all-modules() {
-    target_dir="$HOME/.cure"
-
     if [[ -d "$target_dir" ]]; then
         for repo init_file in ${(kv)plugins}; do
             if [[ -d "$target_dir/$repo" ]]; then
