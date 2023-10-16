@@ -19,7 +19,7 @@ plugins=(
 
 if [[ ! -d "$target_dir" ]]; then
     echo
-    echo "installing Cure in '$target_dir'..."
+    echo "installing Cure in '$CURE_HOME'..."
     echo
     mkdir -p "$target_dir"
 fi
