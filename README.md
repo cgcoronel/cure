@@ -12,7 +12,7 @@
 **Cure** is a plugin manager for your Zsh terminal.
 
 ## Usage
-put in your .zshrc file the flowing code and restart your terminal
+Put in your .zshrc file the flowing code and restart your terminal
 
 ```zsh
 CURE_HOME=${ZDOTDIR:-${HOME}}/.cure
