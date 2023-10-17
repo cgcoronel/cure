@@ -6,7 +6,7 @@
 <img align="right"
      height="80"
      alt="Cure Logo"
-     src="https://avatars.githubusercontent.com/u/22222101279220?s=80&v=4">
+     src="https://github.com/cgcoronel/cure/logo.png">
 </a>
 
 **Cure** is a plugin manager for your Zsh terminal.
