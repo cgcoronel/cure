@@ -51,8 +51,6 @@ function git-pull-all-modules() {
     fi
 }
 
-#alias cure='cure'
-
 function cure() {
     if [[ $# -eq 1 ]]; then
         if [[ $1 == "update" ]]; then
