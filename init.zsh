@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 
 target_dir="$CURE_HOME/modules"
 
@@ -38,8 +38,10 @@ function git-pull-all-modules() {
     if [[ -d "$target_dir" ]]; then
         for repo init_file in ${(kv)plugins}; do
             if [[ -d "$target_dir/$repo" ]]; then
-                echo "Updating $repo..."
+                echo "Updating $repo"
                 (cd "$target_dir/$repo" && git pull --quiet --ff --rebase --autostash)
+
+                source ${CURE_HOME}/init.zsh
             fi
         done
     else
@@ -59,6 +61,9 @@ function cure() {
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
                 echo "Cure self-update complete.\n"
+
+                source ${CURE_HOME}/init.zsh
+
                 cure version
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
