@@ -26,7 +26,7 @@ autoload -Uz -- mkcd mkpw coalesce git-action git-info
 for repo init_file in ${(kv)plugins}; do
     if [[ ! -d "$target_dir/$repo" ]]; then
         echo "installing module: '$repo'"
-       nohup git clone "https://github.com/$repo" "$target_dir/$repo" & > /dev/null 2>&1 
+       nohup git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 & > /dev/null
     fi
 
     if [[ -n $init_file && -f "$target_dir/$repo/$init_file" ]]; then
