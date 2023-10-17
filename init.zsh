@@ -1,21 +1,15 @@
 #!/bin/zsh
-# termina zsh plugin manager
 
 target_dir="$CURE_HOME/modules"
 
 typeset -A plugins
-plugins=(
-  "zimfw/environment" "init.zsh"
-  "zimfw/asciiship" "asciiship.zsh-theme"
-  "zimfw/completion" "init.zsh"
-  "zimfw/git-info" "init.zsh"
-  "zimfw/input" "init.zsh"
-  "zimfw/utility" "init.zsh"
-  "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-  "zsh-users/zsh-completions" "zsh-completions.zsh"
-  "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
-  "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
-)
+plugins=()
+
+while IFS=' ' read -A line; do
+    if [[ $#line -eq 2 ]]; then
+        plugins[$line[1]]=$line[2]
+    fi
+done < "$CURE_HOME/.modules.cure"
 
 if [[ ! -d "$target_dir" ]]; then
     echo
