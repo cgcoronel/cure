@@ -51,16 +51,15 @@ function git-pull-all-modules() {
     fi
 }
 
-alias cure='cure_command'
+#alias cure='cure'
 
-function cure_command() {
+function cure() {
     if [[ $# -eq 1 ]]; then
         if [[ $1 == "update" ]]; then
             git-pull-all-modules
         elif [[ $1 == "upgrade" ]]; then
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull
-                echo "Restart your terminal"
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
