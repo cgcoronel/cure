@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-VERSION="0.0.2"
+VERSION="0.0.3"
 
 target_dir="$CURE_HOME/modules"
 
