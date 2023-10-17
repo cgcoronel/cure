@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+VERSION="0.0.1"
+
 target_dir="$CURE_HOME/modules"
 
 typeset -A plugins
@@ -47,6 +49,9 @@ function git-pull-all-modules() {
 
 function cure() {
     case "$1" in
+         "version")
+            echo "Cure version: $VERSION" 
+            ;;
         "update")
             git-pull-all-modules
             ;;
@@ -54,13 +59,13 @@ function cure() {
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
                 echo "Cure self-update complete.\n"
-
+                cure version
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
             ;;
         *)
-            echo "Usage: cure [update|upgrade]"
+            echo "Usage: cure [update|upgrade|version]"
             ;;
     esac
 }
