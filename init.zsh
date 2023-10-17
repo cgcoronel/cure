@@ -37,7 +37,7 @@ function git-pull-all-modules() {
         for repo init_file in ${(kv)plugins}; do
             if [[ -d "$target_dir/$repo" ]]; then
                 echo "Updating $repo..."
-                (cd "$target_dir/$repo" && git pull)
+                (cd "$target_dir/$repo" && git pull --quiet --ff --rebase --autostash)
             fi
         done
     else
@@ -52,7 +52,9 @@ function cure() {
             ;;
         "upgrade")
             if [[ -d "$CURE_HOME" ]]; then
-                git -C "$CURE_HOME" pull
+                git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
+                echo "Cure self-update complete.\n"
+
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
@@ -62,4 +64,3 @@ function cure() {
             ;;
     esac
 }
-
