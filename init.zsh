@@ -46,20 +46,20 @@ function git-pull-all-modules() {
 }
 
 function cure() {
-    if [[ $# -eq 1 ]]; then
-        if [[ $1 == "update" ]]; then
+    case "$1" in
+        "update")
             git-pull-all-modules
-        elif [[ $1 == "upgrade" ]]; then
+            ;;
+        "upgrade")
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
-        else
+            ;;
+        *)
             echo "Usage: cure [update|upgrade]"
-        fi
-    else
-        echo "Usage: cure [update|upgrade]"
-    fi
+            ;;
+    esac
 }
 
