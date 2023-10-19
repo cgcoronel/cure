@@ -1,9 +1,7 @@
 zimfw/environment init.zsh
 zimfw/asciiship asciiship.zsh-theme
-zimfw/completion init.zsh
 zimfw/git-info init.zsh
 zimfw/input init.zsh
-zimfw/utility init.zsh
 zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
 zsh-users/zsh-completions zsh-completions.zsh
 zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
