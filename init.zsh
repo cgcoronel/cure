@@ -4,14 +4,6 @@ VERSION="0.0.4"
 
 target_dir="$CURE_HOME/modules"
 
-typeset -A plugins
-
-while IFS=' ' read -A line; do
-    if [[ $#line -eq 2 && $line[1] != "#" ]]; then
-        plugins[$line[1]]=$line[2]
-    fi
-done < <(grep -E -v "^\s*#|^\s*$" "$CURE_HOME/.modules")
-
 if [[ ! -d "$target_dir" ]]; then
     echo
     echo "installing Cure in '$CURE_HOME'..."
@@ -31,8 +23,16 @@ zsh-users/zsh-completions zsh-completions.zsh
 zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
 zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
 EOF
-
 fi
+
+typeset -A plugins
+
+while IFS=' ' read -A line; do
+    if [[ $#line -eq 2 && $line[1] != "#" ]]; then
+        plugins[$line[1]]=$line[2]
+    fi
+done < <(grep -E -v "^\s*#|^\s*$" "$CURE_HOME/.modules")
+
 
 fpath=($target_dir/zimfw/utility/functions $target_dir/zimfw/git-info/functions $target_dir/zsh-user/zsh-completions/src ${fpath})
 autoload -Uz -- mkcd mkpw coalesce git-action git-info
