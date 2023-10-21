@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+### Initialize default modules.
+
+cat > "$CURE_HOME/.modules" <<EOF
+# Modules
+
+zimfw/environment init.zsh
+zimfw/asciiship asciiship.zsh-theme
+zimfw/git-info init.zsh
+zimfw/input init.zsh
+
+zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
+zsh-users/zsh-completions zsh-completions.zsh
+zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
+zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
+EOF
+

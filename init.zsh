@@ -3,26 +3,12 @@
 VERSION="0.0.4"
 
 target_dir="$CURE_HOME/modules"
+func="${CURE_HOME}/functions"
 
 if [[ ! -d "$target_dir" ]]; then
-    echo
-    echo "installing Cure in '$CURE_HOME'..."
-    echo
+    printf "\ninstalling Cure in '$CURE_HOME'..."
     mkdir -p "$target_dir"
-
-cat > "$CURE_HOME/.modules" <<EOF
-# Modules
-
-zimfw/environment init.zsh
-zimfw/asciiship asciiship.zsh-theme
-zimfw/git-info init.zsh
-zimfw/input init.zsh
-
-zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
-zsh-users/zsh-completions zsh-completions.zsh
-zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
-zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
-EOF
+    source "$func/modules-init"
 fi
 
 typeset -A plugins
@@ -39,7 +25,7 @@ autoload -Uz -- mkcd mkpw coalesce git-action git-info
 
 for repo init_file in ${(kv)plugins}; do
     if [[ ! -d "$target_dir/$repo" ]]; then
-        echo "installing module: '$repo'"
+        printf "installing module: '$repo'"
        git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
     fi
 
@@ -52,21 +38,21 @@ function git-pull-all-modules() {
     if [[ -d "$target_dir" ]]; then
         for repo init_file in ${(kv)plugins}; do
             if [[ -d "$target_dir/$repo" ]]; then
-                echo "Updating $repo"
+                printf "Updating $repo"
                 (cd "$target_dir/$repo" && git pull --quiet --ff --rebase --autostash)
 
                 source ${CURE_HOME}/init.zsh
             fi
         done
     else
-        echo "Cure directory not found: $target_dir"
+        printf "Cure directory not found: $target_dir"
     fi
 }
 
 function cure() {
     case "$1" in
          "version")
-            echo "Cure version: $VERSION" 
+            printf "Cure version: $VERSION" 
             ;;
         "update")
             git-pull-all-modules
@@ -74,17 +60,17 @@ function cure() {
         "upgrade")
             if [[ -d "$CURE_HOME" ]]; then
                 git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
-                echo "Cure self-update complete.\n"
+                printf "Cure self-update complete.\n"
 
                 source ${CURE_HOME}/init.zsh
 
                 cure version
             else
-                echo "CURE_HOME directory not found: $CURE_HOME"
+                printf "CURE_HOME directory not found: $CURE_HOME"
             fi
             ;;
         *)
-            echo "Usage: cure [update|upgrade|version]"
+            print "Usage: cure [update|upgrade|version]"
             ;;
     esac
 }
