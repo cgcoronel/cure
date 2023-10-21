@@ -10,7 +10,7 @@ while IFS=' ' read -A line; do
     if [[ $#line -eq 2 && $line[1] != "#" ]]; then
         plugins[$line[1]]=$line[2]
     fi
-done < <(grep -E -v "^\s*#|^\s*$" "$CURE_HOME/.modules.cure")
+done < <(grep -E -v "^\s*#|^\s*$" "$CURE_HOME/.modules")
 
 if [[ ! -d "$target_dir" ]]; then
     echo
@@ -27,7 +27,7 @@ for repo init_file in ${(kv)plugins}; do
         echo "installing module: '$repo'"
        git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
 
-cat > "$CURE_HOME/.modules.cure" <<EOF
+cat > "$CURE_HOME/.modules" <<EOF
 # Modules
 
 zimfw/environment init.zsh
