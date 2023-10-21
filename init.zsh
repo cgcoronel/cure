@@ -5,13 +5,12 @@ VERSION="0.0.4"
 target_dir="$CURE_HOME/modules"
 
 typeset -A plugins
-plugins=()
 
 while IFS=' ' read -A line; do
-    if [[ $#line -eq 2 ]]; then
+    if [[ $#line -eq 2 && $line[1] != "#" ]]; then
         plugins[$line[1]]=$line[2]
     fi
-done < "$CURE_HOME/.modules.cure"
+done < <(grep -E -v "^\s*#|^\s*$" "$CURE_HOME/.modules.cure")
 
 if [[ ! -d "$target_dir" ]]; then
     echo
@@ -27,6 +26,21 @@ for repo init_file in ${(kv)plugins}; do
     if [[ ! -d "$target_dir/$repo" ]]; then
         echo "installing module: '$repo'"
        git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
+
+cat > "$CURE_HOME/.modules.cure" <<EOF
+# Modules
+
+zimfw/environment init.zsh
+zimfw/asciiship asciiship.zsh-theme
+zimfw/git-info init.zsh
+zimfw/input init.zsh
+
+zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
+zsh-users/zsh-completions zsh-completions.zsh
+zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
+zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
+EOF
+
     fi
 
     if [[ -n $init_file && -f "$target_dir/$repo/$init_file" ]]; then
@@ -74,3 +88,5 @@ function cure() {
             ;;
     esac
 }
+
+
