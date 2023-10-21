@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+### Cure help.
+
+function cure() {
+    case "$1" in
+         "version")
+            echo "Cure version: $VERSION" 
+            ;;
+        "update")
+            source "$func/modules-update" 
+            ;;
+        "upgrade")
+            if [[ -d "$CURE_HOME" ]]; then
+                git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
+                echo "Cure self-update complete."
+
+                source ${CURE_HOME}/init.zsh
+
+                cure version
+            else
+                echo "CURE_HOME directory not found: $CURE_HOME"
+            fi
+            ;;
+        *)
+            echo "Usage: cure [update|upgrade|version]"
+            ;;
+    esac
+}
+
+
+

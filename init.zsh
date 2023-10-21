@@ -6,7 +6,7 @@ target_dir="$CURE_HOME/modules"
 func="${CURE_HOME}/functions"
 
 if [[ ! -d "$target_dir" ]]; then
-    echo "installing Cure in '$CURE_HOME'..."
+    echo "\ninstalling Cure in '$CURE_HOME'...\n"
     mkdir -p "$target_dir"
     source "$func/modules-init"
 fi
@@ -34,30 +34,6 @@ for repo init_file in ${(kv)plugins}; do
     fi
 done
 
-function cure() {
-    case "$1" in
-         "version")
-            echo "Cure version: $VERSION" 
-            ;;
-        "update")
-            source "$func/modules-update" 
-            ;;
-        "upgrade")
-            if [[ -d "$CURE_HOME" ]]; then
-                git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
-                echo "Cure self-update complete."
 
-                source ${CURE_HOME}/init.zsh
-
-                cure version
-            else
-                echo "CURE_HOME directory not found: $CURE_HOME"
-            fi
-            ;;
-        *)
-            echo "Usage: cure [update|upgrade|version]"
-            ;;
-    esac
-}
-
+source "$func/cure-help"
 
