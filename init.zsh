@@ -17,15 +17,6 @@ if [[ ! -d "$target_dir" ]]; then
     echo "installing Cure in '$CURE_HOME'..."
     echo
     mkdir -p "$target_dir"
-fi
-
-fpath=($target_dir/zimfw/utility/functions $target_dir/zimfw/git-info/functions $target_dir/zsh-user/zsh-completions/src ${fpath})
-autoload -Uz -- mkcd mkpw coalesce git-action git-info
-
-for repo init_file in ${(kv)plugins}; do
-    if [[ ! -d "$target_dir/$repo" ]]; then
-        echo "installing module: '$repo'"
-       git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
 
 cat > "$CURE_HOME/.modules" <<EOF
 # Modules
@@ -41,6 +32,15 @@ zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
 zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
 EOF
 
+fi
+
+fpath=($target_dir/zimfw/utility/functions $target_dir/zimfw/git-info/functions $target_dir/zsh-user/zsh-completions/src ${fpath})
+autoload -Uz -- mkcd mkpw coalesce git-action git-info
+
+for repo init_file in ${(kv)plugins}; do
+    if [[ ! -d "$target_dir/$repo" ]]; then
+        echo "installing module: '$repo'"
+       git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
     fi
 
     if [[ -n $init_file && -f "$target_dir/$repo/$init_file" ]]; then
