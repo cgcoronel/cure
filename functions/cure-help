@@ -29,7 +29,7 @@ function cure() {
             echo "$CURE_HOME deleted."
             echo
             echo "Please remove this block of code from your .zshrc and restart your terminal"
-            echo
+            echo "--------------------------------------------------------------------------"
             echo "CURE_HOME=\${ZDOTDIR:-\${HOME}}/.cure"
             echo  
             echo "if [ ! -d "\$CURE_HOME" ]; then"
@@ -37,6 +37,7 @@ function cure() {
             echo "fi"
             echo
             echo "source \${CURE_HOME}/init.zsh"
+            echo "--------------------------------------------------------------------------"
             ;;
         *)
             echo "Usage: cure [update|upgrade|uninstall|version]"
