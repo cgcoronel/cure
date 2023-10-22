@@ -47,19 +47,19 @@ To update all your plugins:
 ## Some features
 
 Prompt
-<img align="left"
+<img 
      height="80"
      src="https://github.com/cgcoronel/cure/blob/main/images/prompt.jpeg">
 </a>
 
 Autocompletion
-<img align="left"
+<img 
      height="80"
      src="https://github.com/cgcoronel/cure/blob/main/images/autocomplete.jpeg">
 </a>
 
 Syntax Highlighting
-<img align="left"
+<img 
      height="80"
      src="https://github.com/cgcoronel/cure/blob/main/images/syntax-highlighting.jpeg">
 </a>
