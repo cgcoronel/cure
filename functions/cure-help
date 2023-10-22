@@ -23,9 +23,12 @@ function cure() {
             fi
             ;;
          "uninstall")
+            echo "Uninstalling Cure..."
             sudo rm -rf "$CURE_HOME"
 
-            echo "Please remove this block of code from your .zshrc"
+            echo "$CURE_HOME deleted."
+            echo
+            echo "Please remove this block of code from your .zshrc and restart your terminal"
             echo
             echo "CURE_HOME=\${ZDOTDIR:-\${HOME}}/.cure"
             echo  
