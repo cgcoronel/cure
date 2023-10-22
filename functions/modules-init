@@ -13,6 +13,7 @@ zimfw/input init.zsh
 zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
 zsh-users/zsh-completions zsh-completions.zsh
 zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
-zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
+
+zdharma-continuum/fast-syntax-highlighting fast-syntax-highlighting.plugin.zsh
 EOF
 
