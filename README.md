@@ -45,13 +45,10 @@ To update all your plugins:
 
 ## Some features
 
-Prompt
 <img src="https://github.com/cgcoronel/cure/blob/main/images/prompt.jpeg" width="500" height="90">
 
-Autocompletion
 <img src="https://github.com/cgcoronel/cure/blob/main/images/autocomplete.jpeg" width="500" height="90">
 
-Syntax Highlighting
 <img src="https://github.com/cgcoronel/cure/blob/main/images/syntax-highlighting.jpeg" width="500" height="90">
 
 
