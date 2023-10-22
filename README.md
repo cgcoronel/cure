@@ -6,7 +6,7 @@
 <img align="right"
      height="80"
      alt="Cure Logo"
-     src="https://github.com/cgcoronel/cure/blob/main/logo.png">
+     src="https://github.com/cgcoronel/cure/blob/main/images/logo.png">
 </a>
 
 **Cure** is a plugin manager for your Zsh terminal.
@@ -24,6 +24,48 @@ fi
 source ${CURE_HOME}/init.zsh
 ```
 
+## Getting Updates
+To update Cure, you should execute:
+
+```zsh
+~
+% cure upgrade
+```
+
+To update all your plugins:
+```zsh
+~
+% cure update 
+```
+
+## Uninstalling Cure
+```zsh
+~
+% cure uninstall
+```
+
+## Some features
+
+Prompt
+<img align="right"
+     height="80"
+     alt="cure logo"
+     src="https://github.com/cgcoronel/cure/blob/main/images/prompt.jpeg">
+</a>
+
+Autocompletion
+<img align="right"
+     height="80"
+     alt="cure logo"
+     src="https://github.com/cgcoronel/cure/blob/main/images/autocomplete.jpeg">
+</a>
+
+Syntax Highlighting
+<img align="right"
+     height="80"
+     alt="cure logo"
+     src="https://github.com/cgcoronel/cure/blob/main/images/syntax-highlight.jpeg">
+</a>
 
 
 

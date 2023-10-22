@@ -22,8 +22,21 @@ function cure() {
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
             ;;
+         "uninstall")
+            sudo rm -rf "$CURE_HOME"
+
+            echo "Please remove this block of code from your .zshrc"
+            echo
+            echo "CURE_HOME=\${ZDOTDIR:-\${HOME}}/.cure"
+            echo  
+            echo "if [ ! -d "\$CURE_HOME" ]; then"
+            echo "  git clone https://github.com/cgcoronel/cure \"\$CURE_HOME\""
+            echo "fi"
+            echo
+            echo "source \${CURE_HOME}/init.zsh"
+            ;;
         *)
-            echo "Usage: cure [update|upgrade|version]"
+            echo "Usage: cure [update|upgrade|uninstall|version]"
             ;;
     esac
 }
