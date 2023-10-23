@@ -39,8 +39,7 @@ To update all your plugins, execute the following command:
 ```
 
 ## Add new plugins
-
-To add new plugins to Cure, you need to edit the .cure/.modules file and include them by specifying the repository and the startup script.
+To add new plugins to Cure, you need to edit the .cure/.modules file and include them by specifying the repository and the startup script. Then, to load them, you need to restart your terminal."
 
 Here are some examples:
 
