@@ -39,12 +39,28 @@ To update all your plugins, execute the following command:
 ```
 
 ## Uninstalling Cure
-And finally, to uninstall Cure, you should execute the following steps
+And finally, to uninstall Cure, you should execute the following steps:
+
+First, execute the following command:
 
 ```zsh
 ~
 % cure uninstall
 ```
+
+And then, remove the following block of code from your .zshrc.
+
+```zsh
+CURE_HOME=${ZDOTDIR:-${HOME}}/.cure
+
+if [ ! -d "$CURE_HOME" ]; then
+  git clone https://github.com/cgcoronel/cure "$CURE_HOME"
+fi
+
+source ${CURE_HOME}/init.zsh
+```
+
+
 
 ## Some features
 
