@@ -11,7 +11,7 @@
 **Cure** is a plugin manager for your Zsh terminal.
 
 ## Usage
-Put in your .zshrc file the flowing code and restart your terminal
+Put the following code in your .zshrc file and restart your terminal.
 
 ```zsh
 CURE_HOME=${ZDOTDIR:-${HOME}}/.cure
@@ -24,20 +24,23 @@ source ${CURE_HOME}/init.zsh
 ```
 
 ## Getting Updates
-To update Cure, you should execute:
+To update Cure, you should execute the following command:
 
 ```zsh
 ~
 % cure upgrade
 ```
 
-To update all your plugins:
+To update all your plugins, execute the following command:
+
 ```zsh
 ~
 % cure update 
 ```
 
 ## Uninstalling Cure
+And finally, to uninstall Cure, you should execute the following steps
+
 ```zsh
 ~
 % cure uninstall
