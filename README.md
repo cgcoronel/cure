@@ -38,6 +38,22 @@ To update all your plugins, execute the following command:
 % cure update 
 ```
 
+## Add new plugins
+
+To add new plugins to Cure, you need to edit the .cure/.modules file and include them by specifying the repository and the startup script.
+
+Here are some examples:
+
+```zsh
+# Modules
+
+zimfw/environment init.zsh
+zimfw/asciiship asciiship.zsh-theme
+zimfw/git-info init.zsh
+zimfw/input init.zsh 
+```
+
+
 ## Uninstalling Cure
 And finally, to uninstall Cure, you should execute the following steps:
 
