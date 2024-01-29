@@ -11,7 +11,7 @@
 **Cure** is a plugin manager for your Zsh terminal.
 
 ## Usage
-Put in your .zshrc file the flowing code and restart your terminal
+Put the following code in your .zshrc file and restart your terminal.
 
 ```zsh
 CURE_HOME=${ZDOTDIR:-${HOME}}/.cure
@@ -24,24 +24,58 @@ source ${CURE_HOME}/init.zsh
 ```
 
 ## Getting Updates
-To update Cure, you should execute:
+To update Cure, you should execute the following command:
 
 ```zsh
 ~
 % cure upgrade
 ```
 
-To update all your plugins:
+To update all your plugins, execute the following command:
+
 ```zsh
 ~
 % cure update 
 ```
 
+## Add new plugins
+To add new plugins to Cure, you need to edit the .cure/.modules file and include them by specifying the repository and the startup script. Then, to load them, you need to restart your terminal.
+
+Here are some examples:
+
+```zsh
+# Modules
+
+zimfw/environment init.zsh
+zimfw/asciiship asciiship.zsh-theme
+zimfw/git-info init.zsh
+zimfw/input init.zsh 
+```
+
+
 ## Uninstalling Cure
+And finally, to uninstall Cure, you should execute the following steps:
+
+First, execute the following command:
+
 ```zsh
 ~
 % cure uninstall
 ```
+
+And then, remove the following block of code from your .zshrc.
+
+```zsh
+CURE_HOME=${ZDOTDIR:-${HOME}}/.cure
+
+if [ ! -d "$CURE_HOME" ]; then
+  git clone https://github.com/cgcoronel/cure "$CURE_HOME"
+fi
+
+source ${CURE_HOME}/init.zsh
+```
+
+
 
 ## Some features
 
