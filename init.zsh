@@ -6,7 +6,7 @@ target_dir="$CURE_HOME/modules"
 func="${CURE_HOME}/functions"
 
 if [[ ! -d "$target_dir" ]]; then
-    echo "\ninstalling Cure in '$CURE_HOME'...\n"
+    echo "\nInstalling Cure in '$CURE_HOME'...\n"
     mkdir -p "$target_dir"
     source "$func/modules-init"
 fi
@@ -25,15 +25,14 @@ autoload -Uz -- mkcd mkpw coalesce git-action git-info
 
 for repo init_file in ${(kv)plugins}; do
     if [[ ! -d "$target_dir/$repo" ]]; then
-        echo "installing module: '$repo'"
-       git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
+        echo "Installing module: '$repo'"
+        git clone "https://github.com/$repo" "$target_dir/$repo" > /dev/null 2>&1 
     fi
 
     if [[ -n $init_file && -f "$target_dir/$repo/$init_file" ]]; then
-       source "$target_dir/$repo/$init_file"
+        source "$target_dir/$repo/$init_file"
     fi
 done
-
 
 source "$func/cure-help"
 
