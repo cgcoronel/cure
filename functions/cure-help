@@ -8,7 +8,7 @@ function cure() {
             echo "Cure version: $VERSION" 
             ;;
         "update")
-            source "$func/modules-update" 
+            source "$func_dir/modules-update" 
             ;;
         "upgrade")
             if [[ -d "$CURE_HOME" ]]; then
