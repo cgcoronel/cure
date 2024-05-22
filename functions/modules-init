@@ -2,7 +2,9 @@
 
 ### Initialize default modules.
 
-cat > "$CURE_HOME/.modules" <<EOF
+modules_file="$CURE_HOME/.modules"
+
+cat > "$modules_file" <<- 'EOF'
 # Modules
 
 zimfw/environment init.zsh
