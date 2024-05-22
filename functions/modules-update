@@ -3,14 +3,15 @@
 ### Update modules.
 
 if [[ -d "$target_dir" ]]; then
-    for repo init_file in ${(kv)plugins}; do
-        if [[ -d "$target_dir/$repo" ]]; then
+    for repo init_file in "${(@kv)plugins}"; do
+        repo_path="$target_dir/$repo"
+        if [[ -d "$repo_path" ]]; then
             echo "Updating $repo"
-            (cd "$target_dir/$repo" && git pull --quiet --ff --rebase --autostash)
-
-            source ${CURE_HOME}/init.zsh
+            (cd "$repo_path" && git pull --quiet --ff --rebase --autostash)
         fi
     done
+    source "${CURE_HOME}/init.zsh"
 else
     echo "Cure directory not found: $target_dir"
 fi
+

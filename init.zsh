@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-VERSION="1.0.0"
+VERSION="1.1.0"
 
 target_dir="${CURE_HOME}/modules"
 func_dir="${CURE_HOME}/functions"
@@ -12,16 +12,19 @@ if [[ ! -d "$target_dir" ]]; then
 fi
 
 typeset -A plugins
-while IFS=' ' read -A line; do
-    if [[ ${#line[@]} -eq 2 && $line[1] != "#" ]]; then
-        plugins[${line[1]}]=${line[2]}
+while read -r line; do
+    if [[ -n "$line" && "$line" != \#* ]]; then
+        set -- ${(s: :)line}
+        if [[ $# -eq 2 ]]; then
+            plugins[$1]=$2
+        fi
     fi
-done < <(grep -E -v "^\s*#|^\s*$" "${CURE_HOME}/.modules")
+done < "${CURE_HOME}/.modules"
 
 fpath=(
     "$target_dir/zimfw/utility/functions"
     "$target_dir/zimfw/git-info/functions"
-    "$target_dir/zsh-user/zsh-completions/src"
+    "$target_dir/zsh-users/zsh-completions/src"
     ${fpath}
 )
 autoload -Uz -- mkcd mkpw coalesce git-action git-info

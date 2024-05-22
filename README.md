@@ -1,7 +1,7 @@
 # cure 
 
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](/LICENSE)
-![version](https://img.shields.io/badge/version-v1.0.0-df5e88)
+![version](https://img.shields.io/badge/version-v1.1.0-df5e88)
 
 <img align="right"
      height="80"
