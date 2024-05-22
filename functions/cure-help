@@ -4,7 +4,7 @@
 
 function cure() {
     case "$1" in
-         "version")
+        "version")
             echo "Cure version: $VERSION" 
             ;;
         "update")
@@ -15,14 +15,14 @@ function cure() {
                 git -C "$CURE_HOME" pull --quiet --ff --rebase --autostash
                 echo "Cure self-update complete."
 
-                source ${CURE_HOME}/init.zsh
+                source "${CURE_HOME}/init.zsh"
 
                 cure version
             else
                 echo "CURE_HOME directory not found: $CURE_HOME"
             fi
             ;;
-         "uninstall")
+        "uninstall")
             echo "Uninstalling Cure..."
             sudo rm -rf "$CURE_HOME"
 
@@ -44,6 +44,3 @@ function cure() {
             ;;
     esac
 }
-
-
-
