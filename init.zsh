@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-VERSION="0.1.2"
+VERSION="1.0.0"
 
 target_dir="${CURE_HOME}/modules"
 func_dir="${CURE_HOME}/functions"
