@@ -22,11 +22,10 @@ while read -r line; do
 done < "${CURE_HOME}/.modules"
 
 fpath=(
-    "$target_dir/zimfw/utility/functions"
-    "$target_dir/zimfw/git-info/functions"
-    "$target_dir/zsh-users/zsh-completions/src"
-    ${fpath}
+     "$target_dir/zimfw/git-info/functions"
+     ${fpath}
 )
+
 autoload -Uz -- mkcd mkpw coalesce git-action git-info
 
 for repo init_file in ${(kv)plugins}; do
