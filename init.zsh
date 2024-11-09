@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-VERSION="1.1.0"
+VERSION="1.2.0"
 
 target_dir="${CURE_HOME}/modules"
 func_dir="${CURE_HOME}/functions"
@@ -12,13 +12,9 @@ if [[ ! -d "$target_dir" ]]; then
 fi
 
 typeset -A plugins
-while read -r line; do
-    if [[ -n "$line" && "$line" != \#* ]]; then
-        set -- ${(s: :)line}
-        if [[ $# -eq 2 ]]; then
-            plugins[$1]=$2
-        fi
-    fi
+
+while IFS=' ' read -r key value; do
+    [[ -n "$key" && "$key" != \#* ]] && plugins[$key]=$value
 done < "${CURE_HOME}/.modules"
 
 fpath=(
