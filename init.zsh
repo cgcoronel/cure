@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 VERSION="1.2.0"
-
+#
 target_dir="${CURE_HOME}/modules"
 func_dir="${CURE_HOME}/functions"
 
